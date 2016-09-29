@@ -1,0 +1,28 @@
+{
+    'extends': 'airbnb',
+
+    'rules': {
+        'indent': [2, 4, {
+            SwitchCase: 1,
+        }],
+        'prefer-const': 0,
+        'no-param-reassign': [2, { props: false }],
+        'no-underscore-dangle': [2, {
+            allowAfterThis: true,
+            allowAfterSuper: true,
+        }],
+        'react/jsx-filename-extension': 0,
+        'react/jsx-indent': [2, 4],
+        'react/jsx-indent-props': [2, 4],
+        'class-methods-use-this': "off",
+        // concerned
+        'react/forbid-prop-types': "off",
+        'react/no-unused-prop-types': "off",
+        'no-plusplus': "off",
+        'no-bitwise': "off",
+    },
+
+    'globals': {
+        'document': false,
+    },
+}
