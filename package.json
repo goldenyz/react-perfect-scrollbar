@@ -1,15 +1,17 @@
 {
   "name": "react-perfect-scrollbar",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A wrapper for perfect-scrollbar to React Component",
   "scripts": {
     "clean": "rimraf lib",
-    "clean:examples": "rimraf examples/static",
-    "build": "npm run clean && babel src --out-dir lib",
-    "build:examples": "npm run clean:examples && webpack --config webpack/docs.config.js",
-    "examples": "npm run clean:examples && babel-node examples/server.js",
-    "lint": "eslint examples/*.js src test *.js",
+    "build": "npm run clean && webpack --mode=build",
+    "example": "npm run clean:example && webpack-dev-server --content-base example/ --config example/webpack.config.js",
+    "lint": "eslint example/*.js src test *.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldenyz/react-perfect-scrollbar.git"
   },
   "keywords": [
     "react",
@@ -31,17 +33,23 @@
     "babel-core": "*",
     "babel-eslint": "*",
     "babel-loader": "*",
-    "babel-plugin-add-module-exports": "*",
     "babel-preset-es2015": "*",
     "babel-preset-react": "*",
     "babel-preset-stage-1": "*",
+    "css-loader": "*",
     "eslint": "*",
     "eslint-config-airbnb": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-jsx-a11y": "*",
     "eslint-plugin-react": "*",
+    "file-loader": "*",
+    "node-sass": "*",
+    "postcss-loader": "*",
     "rimraf": "*",
+    "sass-loader": "*",
+    "style-loader": "*",
     "webpack": "*",
     "webpack-dev-server": "*"
-  }
+  },
+  "homepage": "https://github.com/goldenyz/react-perfect-scrollbar"
 }
