@@ -2,9 +2,10 @@
   "name": "react-perfect-scrollbar",
   "version": "0.1.0",
   "description": "A wrapper for perfect-scrollbar to React Component",
+  "main": "lib/react-perfect-scrollbar.js",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run clean && webpack --mode=build --bail",
+    "build": "npm run clean && webpack --mode=dev --bail && webpack --mode=build --bail",
     "example": "webpack-dev-server --content-base example/ --config example/webpack.config.js",
     "lint": "eslint example/*.js src test *.js",
     "test": "echo \"Test: TBD\""
@@ -18,6 +19,10 @@
     "scrollbar",
     "perfect-scrollbar",
     "react-scrollbar"
+  ],
+  "files": [
+    "lib",
+    "src"
   ],
   "author": "Allen Yang",
   "license": "MIT",
@@ -51,6 +56,9 @@
     "style-loader": "*",
     "webpack": "*",
     "webpack-dev-server": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/goldenyz/react-perfect-scrollbar/issues"
   },
   "homepage": "https://github.com/goldenyz/react-perfect-scrollbar"
 }
