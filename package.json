@@ -4,7 +4,7 @@
   "description": "A wrapper for perfect-scrollbar to React Component",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run clean && webpack --mode=build",
+    "build": "npm run clean && webpack --mode=build --bail",
     "example": "npm run clean:example && webpack-dev-server --content-base example/ --config example/webpack.config.js",
     "lint": "eslint example/*.js src test *.js",
     "test": "echo \"Test: TBD\""
