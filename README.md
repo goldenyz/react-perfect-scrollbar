@@ -1,4 +1,4 @@
-# React-Perfect-Scrollbar [![Travis][build-badge]][build] [![npm][npm-badge]][npm]
+# React-Perfect-Scrollbar [![Build Status](https://travis-ci.org/goldenyz/react-perfect-scrollbar.svg?branch=master)](https://travis-ci.org/goldenyz/react-perfect-scrollbar) [![npm][npm-badge]][npm]
 
 This is react component to allow use [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar) in React.
 

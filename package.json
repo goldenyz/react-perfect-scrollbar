@@ -7,7 +7,7 @@
     "build": "npm run clean && webpack --mode=build",
     "example": "npm run clean:example && webpack-dev-server --content-base example/ --config example/webpack.config.js",
     "lint": "eslint example/*.js src test *.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Test: TBD\""
   },
   "repository": {
     "type": "git",
