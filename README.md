@@ -5,15 +5,15 @@ This is react component to allow use [perfect-scrollbar](https://github.com/nora
 ### Usage
 1. `npm install react-perfect-scrollbar`
 2. Import the module in the place you want to use:
-    ```
+```
     import PerfectScrollbar from 'react-perfect-scrollbar'
-    ```
+```
 3. Wrap you content in this component:
-    ```
+```
     <PerfectScrollbar>
         ... SCROLLBAR CONTENT HERE ...
     </PerfectScrollbar>
-    ```
+```
 
 ### Props
 The following props are accepted:
