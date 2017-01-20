@@ -2,10 +2,10 @@
   "name": "react-perfect-scrollbar",
   "version": "0.1.1",
   "description": "A wrapper for perfect-scrollbar to React Component",
-  "main": "lib/react-perfect-scrollbar.js",
+  "main": "lib/react-perfect-scrollbar.min.js",
   "scripts": {
     "clean": "rimraf lib",
-    "build": "npm run clean && webpack --mode=dev --bail && webpack --mode=build --bail",
+    "build": "npm run clean && webpack --mode=build --bail",
     "example": "webpack-dev-server --content-base example/ --config example/webpack.config.js",
     "lint": "eslint example/*.js src test *.js",
     "test": "echo \"Test: TBD\"",
@@ -35,6 +35,7 @@
     "perfect-scrollbar": "^0.6.12"
   },
   "devDependencies": {
+    "autoprefixer": "^6.6.1",
     "babel-cli": "*",
     "babel-core": "*",
     "babel-eslint": "*",
