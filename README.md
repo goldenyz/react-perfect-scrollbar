@@ -3,20 +3,21 @@
 This is react component to allow use [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar) in React.
 
 ### Usage
-1. `npm install react-perfect-scrollbar`
-2. Add the stylesheet to your html:
+Install the package `npm install react-perfect-scrollbar`
+Add the stylesheet to your html:
 ```
     <link rel='stylesheet' href='dist/css/perfect-scrollbar.css' />
 ```
+
 Or import the css file if you have loader for css files:
 ```
     import 'dist/css/perfect-scrollbar.css';
 ```
-3. Import the module in the place you want to use:
+Import the module in the place you want to use:
 ```
     import PerfectScrollbar from 'react-perfect-scrollbar'
 ```
-4. Wrap you content in this component:
+Wrap you content in this component:
 ```
     <PerfectScrollbar>
         ... SCROLLBAR CONTENT HERE ...
