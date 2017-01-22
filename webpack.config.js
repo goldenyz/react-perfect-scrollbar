@@ -2,14 +2,19 @@
 var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var path = require('path');
-var env = require('yargs').argv.mode;
+var env = process.env.NODE_ENV;
 
 var libraryName = '[name]';
 
-var plugins = [];
+var plugins = [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(env)
+    })
+];
 var outputFile;
 
-if (env === 'build') {
+if (env === 'production') {
     plugins.push(new UglifyJsPlugin({ minimize: true }));
     outputFile = libraryName + '.min.js';
 } else {
@@ -25,7 +30,7 @@ module.exports = {
     devtool: 'source-map',
 
     output: {
-        path: path.join(__dirname, 'lib'),
+        path: path.join(__dirname, 'dist'),
         filename: outputFile,
         library: libraryName,
         libraryTarget: 'umd',
