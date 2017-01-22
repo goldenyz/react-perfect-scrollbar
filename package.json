@@ -25,6 +25,7 @@
     "react-scrollbar"
   ],
   "files": [
+    "dist",
     "lib",
     "src"
   ],
