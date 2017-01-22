@@ -2,7 +2,7 @@
   "name": "react-perfect-scrollbar",
   "version": "0.1.4",
   "description": "A wrapper for perfect-scrollbar to React Component",
-  "main": "lib/index.js",
+  "main": "dist/react-perfect-scrollbar.min.js",
   "scripts": {
     "clean": "rimraf lib && rimraf dist",
     "build:lib": "babel src --out-dir lib",
