@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ps from 'perfect-scrollbar';
 
-import './scrollbar.scss';
-
 const handlerNameByEvent = {
     'ps-scroll-y': 'onScrollY',
     'ps-scroll-x': 'onScrollX',
