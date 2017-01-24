@@ -1,4 +1,4 @@
-# React-Perfect-Scrollbar [![Build Status](https://travis-ci.org/goldenyz/react-perfect-scrollbar.svg?branch=master)](https://travis-ci.org/goldenyz/react-perfect-scrollbar) [![npm](https://img.shields.io/npm/v/react-perfect-scrollbar.svg?style=flat-square)](https://www.npmjs.com/package/react-perfect-scrollbar)[![npm downloads](https://img.shields.io/npm/dm/react-perfect-scrollbar.svg)](https://www.npmjs.com/package/react-perfect-scrollbar)
+# React-Perfect-Scrollbar [![Build Status](https://travis-ci.org/goldenyz/react-perfect-scrollbar.svg?branch=master)](https://travis-ci.org/goldenyz/react-perfect-scrollbar) [![npm](https://img.shields.io/npm/v/react-perfect-scrollbar.svg?style=flat-square)](https://www.npmjs.com/package/react-perfect-scrollbar) [![npm downloads](https://img.shields.io/npm/dm/react-perfect-scrollbar.svg)](https://www.npmjs.com/package/react-perfect-scrollbar)
 
 This is react component to allow use [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar) in React.
 
