@@ -69,7 +69,7 @@ export default class ScrollBar extends Component {
         const { children } = this.props;
 
         return (
-            <div className="scrollbar-container" ref={(ref) => { this._container = ref; }}>
+            <div className={ "scrollbar-container " + this.props.className } ref={(ref) => { this._container = ref; }}>
                 {children}
             </div>
         );
@@ -88,5 +88,5 @@ ScrollBar.propTypes = {
     onYReachStart: PropTypes.func,
     onYReachEnd: PropTypes.func,
     onXReachStart: PropTypes.func,
-    onXReachEnd: PropTypes.func,
+    onXReachEnd: PropTypes.func
 };
