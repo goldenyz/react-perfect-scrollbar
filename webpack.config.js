@@ -8,7 +8,6 @@ var env = process.env.NODE_ENV;
 var libraryName = '[name]';
 
 var plugins = [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env)
     })
@@ -16,12 +15,24 @@ var plugins = [
 var outputFile;
 
 if (env === 'production') {
-    plugins.push(new UglifyJsPlugin({ minimize: true }));
+    plugins.push(new UglifyJsPlugin({
+        sourceMap: true,
+        compress: {
+            warnings: true
+        },
+    }));
+    plugins.push(new webpack.LoaderOptionsPlugin({
+        minimize: true
+    }));
     outputFile = libraryName + '.min.js';
-    plugins.push(new ExtractTextPlugin('css/styles.min.css'));
+    plugins.push(new ExtractTextPlugin({
+        filename: 'css/styles.min.css'
+    }));
 } else {
     outputFile = libraryName + '.js';
-    plugins.push(new ExtractTextPlugin('css/styles.css'));
+    plugins.push(new ExtractTextPlugin({
+        filename: 'css/styles.css'
+    }));
 }
 
 module.exports = {
@@ -44,19 +55,42 @@ module.exports = {
     },
 
     resolve: {
-        root: path.resolve('./src')
+        modules: [
+            path.join(__dirname, "src"),
+            "node_modules"
+        ],
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.(jsx|js)$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel'
+                loader: 'babel-loader'
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css?sourceMap&-minimize!postcss!sass?sourceMap')
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true,
+                                minimize: false
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader'
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        }
+                    ]
+                })
             }
         ]
     },

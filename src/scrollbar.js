@@ -76,6 +76,20 @@ export default class ScrollBar extends Component {
     }
 }
 
+ScrollBar.defaultProps = {
+    option: undefined,
+    onScrollY: undefined,
+    onScrollX: undefined,
+    onScrollUp: undefined,
+    onScrollDown: undefined,
+    onScrollLeft: undefined,
+    onScrollRight: undefined,
+    onYReachStart: undefined,
+    onYReachEnd: undefined,
+    onXReachStart: undefined,
+    onXReachEnd: undefined,
+};
+
 ScrollBar.propTypes = {
     children: PropTypes.node.isRequired,
     option: PropTypes.object,
