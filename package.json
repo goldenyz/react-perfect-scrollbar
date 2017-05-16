@@ -36,7 +36,8 @@
     "react-dom": ">=0.14.0"
   },
   "dependencies": {
-    "perfect-scrollbar": "^0.6.12"
+    "perfect-scrollbar": "^0.6.12",
+    "prop-types": "^15.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.1",
