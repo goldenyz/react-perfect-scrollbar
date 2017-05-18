@@ -36,6 +36,10 @@ export default class ScrollBar extends Component {
         });
     }
 
+    componentDidUpdate() {
+        ps.update(this._container);
+    }
+
     componentWillUnmount() {
         // unhook up evens
         Object.keys(this._handlerByEvent).forEach((value, key) => {
