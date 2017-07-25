@@ -36,7 +36,7 @@
     "react-dom": ">=0.14.0"
   },
   "dependencies": {
-    "perfect-scrollbar": "^0.6.12",
+    "perfect-scrollbar": "^0.7.1",
     "prop-types": "^15.5"
   },
   "devDependencies": {
@@ -51,10 +51,10 @@
     "babel-preset-stage-1": "*",
     "cross-env": "*",
     "css-loader": "*",
-    "eslint": "*",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb": "*",
     "eslint-plugin-import": "*",
-    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "*",
     "extract-text-webpack-plugin": "*",
     "file-loader": "*",
