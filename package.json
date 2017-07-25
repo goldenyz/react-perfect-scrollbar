@@ -31,13 +31,11 @@
   ],
   "author": "Allen Yang",
   "license": "MIT",
-  "peerDependencies": {
-    "react": ">=0.14.0",
-    "react-dom": ">=0.14.0"
-  },
   "dependencies": {
     "perfect-scrollbar": "^0.7.1",
-    "prop-types": "^15.5"
+    "react": ">=0.14.0",
+    "react-dom": ">=0.14.0",
+    "prop-types": "*"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.1",
