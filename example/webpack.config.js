@@ -23,14 +23,14 @@ module.exports = {
             {
                 test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 query: {
                     presets: ['es2015', 'stage-1', 'react'],
                 },
             },
             {
                 test: /\.(jpg|png|svg|ttf|eot)$/,
-                loader: 'file',
+                loader: 'file-loader',
                 query: {
                     name: 'img/[hash].[ext]',
                 },
