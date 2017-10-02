@@ -69,6 +69,10 @@ export default class ScrollBar extends Component {
         }
         return false;
     }
+    
+    getContainer() {
+        return this._container;
+    }
 
     render() {
         const { children, className } = this.props;
