@@ -59,6 +59,8 @@ There are some methods which can be called from the ref to this component:
 set the scrollTop of the y-scrollbar
 #### setScrollLeft(left: number)
 set the scrollLeft of the x-scrollbar
+#### getContainer()
+get the container's ref
 
 ### Example
 A working example can be found in the `example` directory. Please run `npm run example` and open `http://localhost:8080/` in browser.
