@@ -24,6 +24,8 @@ The following props are accepted:
 #### option
 The optional parameters used to initialize [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar).
 For more info, please refer to  https://github.com/noraesae/perfect-scrollbar#optional-parameters
+#### containerRef
+Return the container ref: (ref) => void;
 #### onScrollY
 Invoked when the y-axis is scrolled in either direction.
 #### onScrollX
