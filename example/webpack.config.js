@@ -19,25 +19,25 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                query: {
+                options: {
                     presets: ['es2015', 'stage-1', 'react'],
                 },
             },
             {
                 test: /\.(jpg|png|svg|ttf|eot)$/,
                 loader: 'file-loader',
-                query: {
+                options: {
                     name: 'img/[hash].[ext]',
                 },
             },
             {
                 test: /\.scss$/,
-                loaders: [
+                use: [
                     'style-loader',
                     'css-loader',
                     'postcss-loader',
