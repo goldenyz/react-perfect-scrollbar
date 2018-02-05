@@ -6,7 +6,7 @@ This is react component to allow use [perfect-scrollbar](https://github.com/nora
 Install the package `npm install react-perfect-scrollbar`
 Import the css file if you have loader for css files:
 ```
-    import 'perfect-scrollbar/dist/css/styles.css';
+    import 'react-perfect-scrollbar/dist/css/styles.css';
 ```
 Import the module in the place you want to use:
 ```
