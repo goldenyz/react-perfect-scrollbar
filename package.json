@@ -49,7 +49,7 @@
     "babel-preset-stage-2": "*",
     "cross-env": "*",
     "css-loader": "*",
-    "eslint": "*",
+    "eslint": "^4.9.0",
     "eslint-config-airbnb": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-jsx-a11y": "*",
