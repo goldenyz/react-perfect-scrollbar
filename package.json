@@ -32,7 +32,7 @@
   "author": "Allen Yang",
   "license": "MIT",
   "dependencies": {
-    "perfect-scrollbar": "^0.7.1",
+    "perfect-scrollbar": "^0.x",
     "react": ">=0.14.0",
     "react-dom": ">=0.14.0",
     "prop-types": "*"
