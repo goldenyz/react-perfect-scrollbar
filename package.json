@@ -32,7 +32,7 @@
   "author": "Allen Yang",
   "license": "MIT",
   "dependencies": {
-    "perfect-scrollbar": "^0.7.1",
+    "perfect-scrollbar": "^1.3.0",
     "react": ">=0.14.0",
     "react-dom": ">=0.14.0",
     "prop-types": "*"
@@ -43,10 +43,10 @@
     "babel-core": "*",
     "babel-eslint": "*",
     "babel-loader": "*",
-    "babel-plugin-add-module-exports": "*",
-    "babel-preset-es2015": "*",
+    "babel-plugin-transform-object-rest-spread": "*",
+    "babel-plugin-transform-react-jsx": "*",
+    "babel-preset-env": "*",
     "babel-preset-react": "*",
-    "babel-preset-stage-2": "*",
     "cross-env": "*",
     "css-loader": "*",
     "eslint": "^4.9.0",

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import ps from 'perfect-scrollbar';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 const handlerNameByEvent = {
     'ps-scroll-y': 'onScrollY',
@@ -24,7 +24,7 @@ export default class ScrollBar extends Component {
     }
 
     componentDidMount() {
-        ps.initialize(this._container, this.props.option);
+        this.ps = new PerfectScrollbar(this._container);
         // hook up events
         Object.keys(handlerNameByEvent).forEach((key) => {
             const callback = this.props[handlerNameByEvent[key]];
@@ -37,7 +37,7 @@ export default class ScrollBar extends Component {
     }
 
     componentDidUpdate() {
-        ps.update(this._container);
+        this.ps.update(this._container);
     }
 
     componentWillUnmount() {
@@ -46,14 +46,14 @@ export default class ScrollBar extends Component {
             this._container.removeEventListener(key, value, false);
         });
         this._handlerByEvent.clear();
-        ps.destroy(this._container);
+        this.ps.destroy(this._container);
     }
 
     // methods can be invoked by outside
     setScrollTop(top) {
         if (this._container) {
             this._container.scrollTop = top;
-            ps.update(this._container);
+            this.ps.update(this._container);
 
             return true;
         }
@@ -63,14 +63,14 @@ export default class ScrollBar extends Component {
     setScrollLeft(left) {
         if (this._container) {
             this._container.scrollLeft = left;
-            ps.update(this._container);
+            this.ps.update(this._container);
 
             return true;
         }
         return false;
     }
 
-    handleRef = (ref) => {
+    handleRef(ref) {
         this._container = ref;
         this.props.containerRef(ref);
     }
@@ -79,7 +79,7 @@ export default class ScrollBar extends Component {
         const { children, className } = this.props;
 
         return (
-            <div className={`scrollbar-container ${className}`} ref={this.handleRef}>
+            <div className={`scrollbar-container ${className}`} ref={this.handleRef.bind(this)}>
                 {children}
             </div>
         );
