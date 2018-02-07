@@ -63,7 +63,7 @@ set the scrollTop of the y-scrollbar
 set the scrollLeft of the x-scrollbar
 
 ### Example
-A working example can be found in the `example` directory. Please run `npm run example` and open `http://localhost:8080/` in browser.
+A working example can be found in the `example` directory. Please run `npm run example` in browser. (Must run `npm run build` for the first time)
 
 ### License
 MIT
