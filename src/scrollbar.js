@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import ps from 'perfect-scrollbar';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 const handlerNameByEvent = {
     'ps-scroll-y': 'onScrollY',
@@ -24,7 +24,7 @@ export default class ScrollBar extends Component {
     }
 
     componentDidMount() {
-        ps.initialize(this._container, this.props.option);
+        this._ps = new PerfectScrollbar(this._container, this.props.option);
         // hook up events
         Object.keys(handlerNameByEvent).forEach((key) => {
             const callback = this.props[handlerNameByEvent[key]];
@@ -37,7 +37,7 @@ export default class ScrollBar extends Component {
     }
 
     componentDidUpdate() {
-        ps.update(this._container);
+        this._ps.update();
     }
 
     componentWillUnmount() {
@@ -46,28 +46,8 @@ export default class ScrollBar extends Component {
             this._container.removeEventListener(key, value, false);
         });
         this._handlerByEvent.clear();
-        ps.destroy(this._container);
-    }
-
-    // methods can be invoked by outside
-    setScrollTop(top) {
-        if (this._container) {
-            this._container.scrollTop = top;
-            ps.update(this._container);
-
-            return true;
-        }
-        return false;
-    }
-
-    setScrollLeft(left) {
-        if (this._container) {
-            this._container.scrollLeft = left;
-            ps.update(this._container);
-
-            return true;
-        }
-        return false;
+        this._ps.destroy();
+        this._ps = null;
     }
 
     handleRef = (ref) => {
