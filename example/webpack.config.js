@@ -14,7 +14,7 @@ module.exports = {
 
     resolve: {
         alias: {
-            'react-perfect-scrollbar': path.join(__dirname, '..', 'src'),
+            'react-perfect-scrollbar': path.join(__dirname, '..'),
         },
     },
 
@@ -44,7 +44,18 @@ module.exports = {
                     'sass-loader',
                 ],
             },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ],
+            },
         ],
+    },
+
+    devServer: {
+        open: true,
     },
 
     devtool: 'source-map',
