@@ -1,6 +1,6 @@
 {
   "name": "react-perfect-scrollbar",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A wrapper for perfect-scrollbar to React Component",
   "main": "lib/index.js",
   "scripts": {
