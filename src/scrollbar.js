@@ -24,7 +24,7 @@ export default class ScrollBar extends Component {
     }
 
     componentDidMount() {
-        this.ps = new PerfectScrollbar(this._container);
+        this._ps = new PerfectScrollbar(this._container, this.props.option);
         // hook up events
         Object.keys(handlerNameByEvent).forEach((key) => {
             const callback = this.props[handlerNameByEvent[key]];
@@ -37,7 +37,7 @@ export default class ScrollBar extends Component {
     }
 
     componentDidUpdate() {
-        this.ps.update(this._container);
+        this._ps.update();
     }
 
     componentWillUnmount() {
@@ -46,31 +46,11 @@ export default class ScrollBar extends Component {
             this._container.removeEventListener(key, value, false);
         });
         this._handlerByEvent.clear();
-        this.ps.destroy(this._container);
+        this._ps.destroy();
+        this._ps = null;
     }
 
-    // methods can be invoked by outside
-    setScrollTop(top) {
-        if (this._container) {
-            this._container.scrollTop = top;
-            this.ps.update(this._container);
-
-            return true;
-        }
-        return false;
-    }
-
-    setScrollLeft(left) {
-        if (this._container) {
-            this._container.scrollLeft = left;
-            this.ps.update(this._container);
-
-            return true;
-        }
-        return false;
-    }
-
-    handleRef(ref) {
+    handleRef = (ref) => {
         this._container = ref;
         this.props.containerRef(ref);
     }
@@ -79,7 +59,7 @@ export default class ScrollBar extends Component {
         const { children, className } = this.props;
 
         return (
-            <div className={`scrollbar-container ${className}`} ref={this.handleRef.bind(this)}>
+            <div className={`scrollbar-container ${className}`} ref={this.handleRef}>
                 {children}
             </div>
         );

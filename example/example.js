@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line
 import ScrollBar from 'react-perfect-scrollbar';
 // eslint-disable-next-line
-import 'react-perfect-scrollbar/styles.scss';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 import './example.scss';
 

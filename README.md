@@ -2,8 +2,10 @@
 
 This is react component to allow use [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar) in React.
 
+***To read documentation for versions < 1.0, please visit [`v0.2.5`](https://github.com/goldenyz/react-perfect-scrollbar/tree/v0.2.5).***
+
 ### Usage
-Install the package `npm install react-perfect-scrollbar`
+Install the package `npm install react-perfect-scrollbar -S`
 Import the css file if you have loader for css files:
 ```
     import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -26,6 +28,15 @@ The optional parameters used to initialize [perfect-scrollbar](https://github.co
 For more info, please refer to  https://github.com/noraesae/perfect-scrollbar#optional-parameters
 #### containerRef
 Return the container ref: (ref) => void;
+If you want to scroll to somewhere, just update scrollTop/scrollLeft by the ref:
+```
+// Suppose you have save the containerRef to this._scrollRef
+// change scroll top
+this._scrollRef.scrollTop = 0;
+
+// change scroll left
+this._scrollRef.scrollLeft = 0;
+```
 #### onScrollY
 Invoked when the y-axis is scrolled in either direction.
 #### onScrollX
@@ -56,14 +67,10 @@ All the callback 'onXXXX' can accept a parameter: the ref to the scrollbar conta
 ```
 
 ### Methods
-There are some methods which can be called from the ref to this component:
-#### setScrollTop(top: number)
-set the scrollTop of the y-scrollbar
-#### setScrollLeft(left: number)
-set the scrollLeft of the x-scrollbar
+There are no more methods on components. You should update the scroll position by using the [containerRef](#containerref).
 
 ### Example
-A working example can be found in the `example` directory. Please run `npm run example` and open `http://localhost:8080/` in browser.
+A working example can be found in the `example` directory. Please run `npm run example` in browser. (Must run `npm run build` for the first time)
 
 ### License
 MIT
