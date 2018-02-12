@@ -44,7 +44,6 @@
     "babel-eslint": "*",
     "babel-loader": "*",
     "babel-plugin-add-module-exports": "*",
-    "babel-plugin-transform-react-jsx": "*",
     "babel-preset-env": "*",
     "babel-preset-react": "*",
     "cross-env": "*",

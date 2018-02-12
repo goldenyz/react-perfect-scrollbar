@@ -4,7 +4,6 @@
       "react"
   ],
   "plugins": [
-      "transform-object-rest-spread",
-      "transform-react-jsx"
+      "add-module-exports"
   ]
 }
