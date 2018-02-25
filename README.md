@@ -7,15 +7,15 @@ This is react component to allow use [perfect-scrollbar](https://github.com/nora
 ### Usage
 Install the package `npm install react-perfect-scrollbar -S`
 Import the css file if you have loader for css files:
-```
+```js
     import 'react-perfect-scrollbar/dist/css/styles.css';
 ```
 Import the module in the place you want to use:
-```
+```js
     import PerfectScrollbar from 'react-perfect-scrollbar'
 ```
 Wrap you content in this component:
-```
+```jsx
     <PerfectScrollbar>
         ... SCROLLBAR CONTENT HERE ...
     </PerfectScrollbar>
@@ -29,7 +29,7 @@ For more info, please refer to  https://github.com/noraesae/perfect-scrollbar#op
 #### containerRef
 Return the container ref: (ref) => void;
 If you want to scroll to somewhere, just update scrollTop/scrollLeft by the ref:
-```
+```js
 // Suppose you have save the containerRef to this._scrollRef
 // change scroll top
 this._scrollRef.scrollTop = 0;
@@ -59,7 +59,7 @@ Invoked when scrolling reaches the start of the x-axis.
 Invoked when scrolling reaches the end of the x-axis.
 
 All the callback 'onXXXX' can accept a parameter: the ref to the scrollbar container. You can get the current `scrollTop` and `scrollLeft` from it:
-```
+```jsx
     <PerfectScrollbar
         onScrollY={container => console.log(`scrolled to: ${container.scrollTop}.`)}>
         ... SCROLLBAR CONTENT HERE ...
