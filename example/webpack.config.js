@@ -1,6 +1,6 @@
 /* eslint-disable */
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
 
@@ -24,9 +24,6 @@ module.exports = {
                 test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                options: {
-                    presets: ['es2015', 'stage-2', 'react'],
-                },
             },
             {
                 test: /\.(jpg|png|svg|ttf|eot)$/,

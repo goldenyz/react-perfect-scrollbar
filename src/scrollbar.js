@@ -20,6 +20,7 @@ export default class ScrollBar extends Component {
     constructor(props) {
         super(props);
 
+        this.handleRef = this.handleRef.bind(this);
         this._handlerByEvent = new Map();
     }
 
@@ -50,7 +51,7 @@ export default class ScrollBar extends Component {
         this._ps = null;
     }
 
-    handleRef = (ref) => {
+    handleRef(ref) {
         this._container = ref;
         this.props.containerRef(ref);
     }

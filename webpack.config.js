@@ -1,37 +1,37 @@
-/* eslint-disable */
-var webpack = require('webpack');
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var path = require('path');
-var env = process.env.NODE_ENV;
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var libraryName = '[name]';
+const { UglifyJsPlugin } = webpack.optimize;
 
-var plugins = [
+const env = process.env.NODE_ENV;
+const libraryName = '[name]';
+
+const plugins = [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env)
-    })
+        'process.env.NODE_ENV': JSON.stringify(env),
+    }),
 ];
-var outputFile;
 
+let outputFile;
 if (env === 'production') {
     plugins.push(new UglifyJsPlugin({
         sourceMap: true,
         compress: {
-            warnings: true
+            warnings: true,
         },
     }));
     plugins.push(new webpack.LoaderOptionsPlugin({
-        minimize: true
+        minimize: true,
     }));
-    outputFile = libraryName + '.min.js';
+    outputFile = `${libraryName}.min.js`;
     plugins.push(new ExtractTextPlugin({
-        filename: 'css/styles.min.css'
+        filename: 'css/styles.min.css',
     }));
 } else {
-    outputFile = libraryName + '.js';
+    outputFile = `${libraryName}.js`;
     plugins.push(new ExtractTextPlugin({
-        filename: 'css/styles.css'
+        filename: 'css/styles.css',
     }));
 }
 
@@ -40,8 +40,8 @@ module.exports = {
     entry: {
         'react-perfect-scrollbar': [
             path.join(__dirname, '/src/index.js'),
-            path.join(__dirname, '/src/styles.scss')
-        ]
+            path.join(__dirname, '/src/styles.scss'),
+        ],
     },
 
     devtool: 'source-map',
@@ -51,14 +51,16 @@ module.exports = {
         filename: outputFile,
         library: libraryName,
         libraryTarget: 'umd',
-        umdNamedDefine: true
+        umdNamedDefine: true,
     },
 
     resolve: {
         modules: [
-            path.join(__dirname, "src"),
-            "node_modules"
+            path.join(__dirname, './'),
+            'node_modules',
         ],
+
+        extensions: ['.js', '.jsx'],
     },
 
     module: {
@@ -66,7 +68,9 @@ module.exports = {
             {
                 test: /\.(jsx|js)$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader'
+                use: {
+                    loader: 'babel-loader',
+                },
             },
             {
                 test: /\.scss$/,
@@ -77,25 +81,25 @@ module.exports = {
                             loader: 'css-loader',
                             options: {
                                 sourceMap: true,
-                                minimize: false
-                            }
+                                minimize: false,
+                            },
                         },
                         {
                             loader: 'postcss-loader',
                             options: {
-                                sourceMap: true
-                            }
+                                sourceMap: true,
+                            },
                         },
                         {
                             loader: 'sass-loader',
                             options: {
-                                sourceMap: true
-                            }
-                        }
-                    ]
-                })
-            }
-        ]
+                                sourceMap: true,
+                            },
+                        },
+                    ],
+                }),
+            },
+        ],
     },
 
     externals: [
@@ -104,7 +108,7 @@ module.exports = {
                 root: 'React',
                 commonjs2: 'react',
                 commonjs: 'react',
-                amd: 'react'
+                amd: 'react',
             },
         },
         {
@@ -112,7 +116,7 @@ module.exports = {
                 root: 'ReactDOM',
                 commonjs2: 'react-dom',
                 commonjs: 'react-dom',
-                amd: 'react-dom'
+                amd: 'react-dom',
             },
         },
         {
@@ -120,10 +124,10 @@ module.exports = {
                 root: 'PropTypes',
                 commonjs2: 'prop-types',
                 commonjs: 'prop-types',
-                amd: 'prop-types'
-            }
-        }
+                amd: 'prop-types',
+            },
+        },
     ],
 
-    plugins: plugins
+    plugins,
 };

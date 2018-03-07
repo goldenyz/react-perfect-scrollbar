@@ -1,7 +1,7 @@
 node_modules/
 lib/
 dist/
-
+.idea/
 typings/
 
 npm-*.log
