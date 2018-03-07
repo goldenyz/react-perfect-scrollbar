@@ -60,8 +60,8 @@
     "rimraf": "*",
     "sass-loader": "*",
     "style-loader": "*",
-    "webpack": "*",
-    "webpack-dev-server": "*"
+    "webpack": "^3.x",
+    "webpack-dev-server": "^2.x"
   },
   "bugs": {
     "url": "https://github.com/goldenyz/react-perfect-scrollbar/issues"
