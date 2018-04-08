@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "A wrapper for perfect-scrollbar to React Component",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "clean": "rimraf lib && rimraf dist",
     "build:lib": "babel src --out-dir lib && copyfiles src/index.d.ts lib -u 1",
