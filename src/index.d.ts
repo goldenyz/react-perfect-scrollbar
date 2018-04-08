@@ -21,52 +21,52 @@ export interface ScrollBarProps {
     /**
      * fires when the y-axis is scrolled in either direction.
      */
-    onScrollY?: ((containerRef) => void);
+    onScrollY?: (() => void);
 
     /**
      * fires when the x-axis is scrolled in either direction.
      */
-    onScrollX?: ((containerRef) => void);
+    onScrollX?: (() => void);
 
     /**
      * fires when scrolling upwards.
      */
-    onScrollUp?: ((containerRef) => void);
+    onScrollUp?: (() => void);
 
     /**
      * fires when scrolling downwards.
      */
-    onScrollDown?: ((containerRef) => void);
+    onScrollDown?: (() => void);
 
     /**
      * fires when scrolling to the left.
      */
-    onScrollLeft?: ((containerRef) => void);
+    onScrollLeft?: (() => void);
 
     /**
      * fires when scrolling to the right.
      */
-    onScrollRight?: ((containerRef) => void);
+    onScrollRight?: (() => void);
 
     /**
      * fires when scrolling reaches the start of the y-axis.
      */
-    onYReachStart?: ((containerRef) => void);
+    onYReachStart?: (() => void);
 
     /**
      * fires when scrolling reaches the end of the y-axis (useful for infinite scroll).
      */
-    onYReachEnd?: ((containerRef) => void);
+    onYReachEnd?: (() => void);
 
     /**
      * fires when scrolling reaches the start of the x-axis.
      */
-    onXReachStart?: ((containerRef) => void);
+    onXReachStart?: (() => void);
 
     /**
      * fires when scrolling reaches the end of the x-axis.
      */
-    onXReachEnd?: ((containerRef) => void);
+    onXReachEnd?: (() => void);
 }
 
 export default class ScrollBar extends React.Component<ScrollBarProps, any> { }
