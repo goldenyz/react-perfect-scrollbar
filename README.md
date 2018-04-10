@@ -67,7 +67,77 @@ All the callback 'onXXXX' can accept a parameter: the ref to the scrollbar conta
 ```
 
 ### Methods
-There are no more methods on components. You should update the scroll position by using the [containerRef](#containerref).
+The following method can be called by the component ref:
+#### updateScroll
+Update the scrollbar(e.g. recalculate the size) manually.
+In the following case, the scrollbar will not update automatically, which cause the scrollbar size incorrect.
+```
+class Container extends Component {
+  ...
+  render() {
+    return (
+      <ScrollBar>
+        ...
+       <ChildComponent />
+        ...
+      </ScrollBar>
+    );
+  }
+}
+
+class ChildComponent extends Component {
+  handleClick = () => {
+    this.setState({
+      show: !this.state.show,
+    });
+  }
+
+  render () {
+    return (
+      <div>
+        <button onClick={this.handleClick} />
+        { this.state.show ? <div /> }
+      </div>
+    )
+  }
+}
+```
+You need to call `updateScroll` to get the correct scrollbar size:
+```
+class Container extends Component {
+  ...
+  render() {
+    return (
+      <ScrollBar
+        ref = {(ref) => { this._scrollBarRef = ref; }}
+      >
+        ...
+       <ChildComponent
+        onUpdateSize = {() => { this._scrollBarRef.updateScroll(); }}
+       />
+        ...
+      </ScrollBar>
+    );
+  }
+}
+
+class ChildComponent extends Component {
+  handleClick = () => {
+    this.setState({
+      show: !this.state.show,
+    }, () => this.props.onUpdateSize());
+  }
+
+  render () {
+    return (
+      <div>
+        <button onClick={this.handleClick} />
+        { this.state.show ? <div /> }
+      </div>
+    )
+  }
+}
+```
 
 ### Example
 A working example can be found in the `example` directory. Please run `npm run example` in browser. (Must run `npm run build` for the first time)

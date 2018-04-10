@@ -51,6 +51,10 @@ export default class ScrollBar extends Component {
         this._ps = null;
     }
 
+    updateScroll() {
+        this._ps.update();
+    }
+
     handleRef(ref) {
         this._container = ref;
         this.props.containerRef(ref);
