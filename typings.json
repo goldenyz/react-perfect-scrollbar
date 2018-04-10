@@ -1,7 +1,0 @@
-{
-  "globalDependencies": {
-    "react": "registry:dt/react@*",
-    "react-dom": "registry:dt/react-dom@*",
-    "react-global": "registry:dt/react-global@*"
-  }
-}
