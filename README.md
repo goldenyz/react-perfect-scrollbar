@@ -24,8 +24,8 @@ Wrap you content in this component:
 ### Props
 The following props are accepted:
 #### option
-The optional parameters used to initialize [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar).
-For more info, please refer to  https://github.com/noraesae/perfect-scrollbar#optional-parameters
+The optional parameters used to initialize [perfect-scrollbar](https://github.com/utatti/perfect-scrollbar).
+For more info, please refer to  https://github.com/utatti/perfect-scrollbar#options
 #### containerRef
 Return the container ref: (ref) => void;
 If you want to scroll to somewhere, just update scrollTop/scrollLeft by the ref:
