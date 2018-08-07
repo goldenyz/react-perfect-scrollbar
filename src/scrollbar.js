@@ -61,13 +61,22 @@ export default class ScrollBar extends Component {
     }
 
     render() {
-        const { children, className } = this.props;
+        const { children, className, component } = this.props;
 
-        return (
-            <div className={`scrollbar-container ${className}`} ref={this.handleRef}>
-                {children}
-            </div>
-        );
+        console.log('component', component)
+
+        //const CustomComponent = React.createElement(component, null);
+
+        return React.createElement(component, {
+          className:`scrollbar-container ${className}`,
+          ref: this.handleRef
+        }, children)
+
+        //return (
+        //    <CustomComponent className={`scrollbar-container ${className}`} ref={this.handleRef}>
+        //        {children}
+        //    </CustomComponent>
+        //);
     }
 }
 
@@ -85,6 +94,7 @@ ScrollBar.defaultProps = {
     onYReachEnd: undefined,
     onXReachStart: undefined,
     onXReachEnd: undefined,
+    component: 'div',
 };
 
 ScrollBar.propTypes = {
@@ -102,4 +112,5 @@ ScrollBar.propTypes = {
     onYReachEnd: PropTypes.func,
     onXReachStart: PropTypes.func,
     onXReachEnd: PropTypes.func,
+    component: PropTypes.string,
 };
