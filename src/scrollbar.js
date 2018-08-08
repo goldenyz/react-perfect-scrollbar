@@ -60,49 +60,49 @@ export default class ScrollBar extends Component {
     this.props.containerRef(ref);
   }
 
-  render() {
-    const { children, className } = this.props;
+    render() {
+        const { children, className, component } = this.props;
+        const Comp = component;
 
-    return (
-      <div
-        className={`scrollbar-container ${className}`}
-        ref={this.handleRef}
-      >
-        {children}
-      </div>
-    );
-  }
+        return (
+          <Comp className={`scrollbar-container ${className}`} ref={this.handleRef}>
+            {children}
+          </Comp>
+        )
+    }
 }
 
 ScrollBar.defaultProps = {
-  className: '',
-  option: undefined,
-  containerRef: () => { },
-  onScrollY: undefined,
-  onScrollX: undefined,
-  onScrollUp: undefined,
-  onScrollDown: undefined,
-  onScrollLeft: undefined,
-  onScrollRight: undefined,
-  onYReachStart: undefined,
-  onYReachEnd: undefined,
-  onXReachStart: undefined,
-  onXReachEnd: undefined,
+    className: '',
+    option: undefined,
+    containerRef: () => { },
+    onScrollY: undefined,
+    onScrollX: undefined,
+    onScrollUp: undefined,
+    onScrollDown: undefined,
+    onScrollLeft: undefined,
+    onScrollRight: undefined,
+    onYReachStart: undefined,
+    onYReachEnd: undefined,
+    onXReachStart: undefined,
+    onXReachEnd: undefined,
+    component: 'div',
 };
 
 ScrollBar.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  option: PropTypes.object,
-  containerRef: PropTypes.func,
-  onScrollY: PropTypes.func,
-  onScrollX: PropTypes.func,
-  onScrollUp: PropTypes.func,
-  onScrollDown: PropTypes.func,
-  onScrollLeft: PropTypes.func,
-  onScrollRight: PropTypes.func,
-  onYReachStart: PropTypes.func,
-  onYReachEnd: PropTypes.func,
-  onXReachStart: PropTypes.func,
-  onXReachEnd: PropTypes.func,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    option: PropTypes.object,
+    containerRef: PropTypes.func,
+    onScrollY: PropTypes.func,
+    onScrollX: PropTypes.func,
+    onScrollUp: PropTypes.func,
+    onScrollDown: PropTypes.func,
+    onScrollLeft: PropTypes.func,
+    onScrollRight: PropTypes.func,
+    onYReachStart: PropTypes.func,
+    onYReachEnd: PropTypes.func,
+    onXReachStart: PropTypes.func,
+    onXReachEnd: PropTypes.func,
+    component: PropTypes.string,
 };
