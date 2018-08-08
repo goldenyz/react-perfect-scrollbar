@@ -16,7 +16,7 @@ export interface ScrollBarProps {
     /**
      * get the container ref
      */
-    containerRef?: (() => void);
+    containerRef?: ((ref: any) => void);
 
     /**
      * fires when the y-axis is scrolled in either direction.
