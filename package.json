@@ -9,7 +9,7 @@
     "build:lib": "babel src --out-dir lib && copyfiles src/index.d.ts lib -u 1",
     "build:umd": "cross-env NODE_ENV=development webpack --bail",
     "build:umd:min": "cross-env NODE_ENV=production webpack --bail",
-    "build": "npm run clean && npm update && npm run lint && npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "build": "npm run clean && npm run lint && npm run build:lib && npm run build:umd && npm run build:umd:min",
     "example": "webpack-dev-server --content-base example/ --config example/webpack.config.js",
     "lint": "eslint src",
     "test": "echo \"Test: TBD\"",
