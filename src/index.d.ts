@@ -67,6 +67,11 @@ export interface ScrollBarProps {
      * fires when scrolling reaches the end of the x-axis.
      */
     onXReachEnd?: (() => void);
+
+    /**
+     * component name
+     */
+    component?: string;
 }
 
 export default class ScrollBar extends React.Component<ScrollBarProps, any> { }
