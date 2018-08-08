@@ -39,6 +39,8 @@ this._scrollRef.scrollLeft = 0;
 ```
 #### component
 The container component type. Default to "div". Only string is allowed.
+#### className
+The className added to container.
 #### onScrollY
 Invoked when the y-axis is scrolled in either direction.
 #### onScrollX
