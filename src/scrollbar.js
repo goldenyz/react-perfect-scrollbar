@@ -62,11 +62,13 @@ export default class ScrollBar extends Component {
 
     render() {
         const { children, className, component } = this.props;
+        const Comp = component;
 
-        return React.createElement(component, {
-          className:`scrollbar-container ${className}`,
-          ref: this.handleRef
-        }, children)
+        return (
+          <Comp className={`scrollbar-container ${className}`} ref={this.handleRef}>
+            {children}
+          </Comp>
+        )
     }
 }
 
