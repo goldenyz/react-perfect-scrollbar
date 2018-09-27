@@ -21,52 +21,52 @@ export interface ScrollBarProps {
   /**
    * fires when the y-axis is scrolled in either direction.
    */
-  onScrollY?: (() => void);
+  onScrollY?: ((container: any) => void);
 
   /**
    * fires when the x-axis is scrolled in either direction.
    */
-  onScrollX?: (() => void);
+  onScrollX?: ((container: any) => void);
 
   /**
    * fires when scrolling upwards.
    */
-  onScrollUp?: (() => void);
+  onScrollUp?: ((container: any) => void);
 
   /**
    * fires when scrolling downwards.
    */
-  onScrollDown?: (() => void);
+  onScrollDown?: ((container: any) => void);
 
   /**
    * fires when scrolling to the left.
    */
-  onScrollLeft?: (() => void);
+  onScrollLeft?: ((container: any) => void);
 
   /**
    * fires when scrolling to the right.
    */
-  onScrollRight?: (() => void);
+  onScrollRight?: ((container: any) => void);
 
   /**
    * fires when scrolling reaches the start of the y-axis.
    */
-  onYReachStart?: (() => void);
+  onYReachStart?: ((container: any) => void);
 
   /**
    * fires when scrolling reaches the end of the y-axis (useful for infinite scroll).
    */
-  onYReachEnd?: (() => void);
+  onYReachEnd?: ((container: any) => void);
 
   /**
    * fires when scrolling reaches the start of the x-axis.
    */
-  onXReachStart?: (() => void);
+  onXReachStart?: ((container: any) => void);
 
   /**
    * fires when scrolling reaches the end of the x-axis.
    */
-  onXReachEnd?: (() => void);
+  onXReachEnd?: ((container: any) => void);
 
   /**
    * component name
