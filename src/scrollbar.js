@@ -21,34 +21,50 @@ export default class ScrollBar extends Component {
     super(props);
 
     this.handleRef = this.handleRef.bind(this);
-    this._handlerByEvent = new Map();
+    this._handlerByEvent = {};
   }
 
   componentDidMount() {
     this._ps = new PerfectScrollbar(this._container, this.props.option);
     // hook up events
-    Object.keys(handlerNameByEvent).forEach((key) => {
-      const callback = this.props[handlerNameByEvent[key]];
-      if (callback) {
-        const handler = () => callback(this._container);
-        this._handlerByEvent.set(key, handler);
-        this._container.addEventListener(key, handler, false);
-      }
-    });
+    this._updateEventHook();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    this._updateEventHook(prevProps);
     this._ps.update();
   }
 
   componentWillUnmount() {
     // unhook up evens
     Object.keys(this._handlerByEvent).forEach((value, key) => {
-      this._container.removeEventListener(key, value, false);
+      if (value) {
+        this._container.removeEventListener(key, value, false);
+      }
     });
-    this._handlerByEvent.clear();
+    this._handlerByEvent = {};
     this._ps.destroy();
     this._ps = null;
+  }
+
+  _updateEventHook(prevProps = {}) {
+    // hook up events
+    Object.keys(handlerNameByEvent).forEach((key) => {
+      const callback = this.props[handlerNameByEvent[key]];
+      const prevCallback = prevProps[handlerNameByEvent[key]];
+      if (callback !== prevCallback) {
+        if (prevCallback) {
+          const prevHandler = this._handlerByEvent[key];
+          this._container.removeEventListener(key, prevHandler, false);
+          this._handlerByEvent[key] = null;
+        }
+        if (callback) {
+          const handler = () => callback(this._container);
+          this._container.addEventListener(key, handler, false);
+          this._handlerByEvent[key] = handler;
+        }
+      }
+    });
   }
 
   updateScroll() {
@@ -61,11 +77,11 @@ export default class ScrollBar extends Component {
   }
 
   render() {
-    const { children, className, component } = this.props;
+    const { children, component, className, style } = this.props;
     const Comp = component;
 
     return (
-      <Comp className={`scrollbar-container ${className}`} ref={this.handleRef}>
+      <Comp style={style} className={`scrollbar-container ${className}`} ref={this.handleRef}>
         {children}
       </Comp>
     );
@@ -74,6 +90,7 @@ export default class ScrollBar extends Component {
 
 ScrollBar.defaultProps = {
   className: '',
+  style: undefined,
   option: undefined,
   containerRef: () => { },
   onScrollY: undefined,
@@ -92,6 +109,7 @@ ScrollBar.defaultProps = {
 ScrollBar.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  style: PropTypes.object,
   option: PropTypes.object,
   containerRef: PropTypes.func,
   onScrollY: PropTypes.func,
