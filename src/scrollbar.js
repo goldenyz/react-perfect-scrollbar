@@ -77,7 +77,9 @@ export default class ScrollBar extends Component {
   }
 
   render() {
-    const { children, component, className, style } = this.props;
+    const {
+      children, component, className, style,
+    } = this.props;
     const Comp = component;
 
     return (
