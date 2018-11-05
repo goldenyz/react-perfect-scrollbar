@@ -14,7 +14,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      'react-perfect-scrollbar': path.join(__dirname, '..'),
+      'react-perfect-scrollbar': path.join(__dirname, '../src'),
     },
   },
 

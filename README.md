@@ -10,10 +10,12 @@ Import the css file if you have loader for css files:
 ```js
     import 'react-perfect-scrollbar/dist/css/styles.css';
 ```
+
 Import the module in the place you want to use:
 ```js
     import PerfectScrollbar from 'react-perfect-scrollbar'
 ```
+
 Wrap you content in this component:
 ```jsx
     <PerfectScrollbar>
@@ -37,10 +39,13 @@ this._scrollRef.scrollTop = 0;
 // change scroll left
 this._scrollRef.scrollLeft = 0;
 ```
+
 #### component
 The container component type. Default to "div". Only string is allowed.
 #### className
 The className added to container.
+#### style
+The style added to container.
 #### onScrollY
 Invoked when the y-axis is scrolled in either direction.
 #### onScrollX
@@ -75,7 +80,7 @@ The following method can be called by the component ref:
 #### updateScroll
 Update the scrollbar(e.g. recalculate the size) manually.
 In the following case, the scrollbar will not update automatically, which cause the scrollbar size incorrect.
-```
+```js
 class Container extends Component {
   ...
   render() {
@@ -106,8 +111,9 @@ class ChildComponent extends Component {
   }
 }
 ```
+
 You need to call `updateScroll` to get the correct scrollbar size:
-```
+```js
 class Container extends Component {
   ...
   render() {
