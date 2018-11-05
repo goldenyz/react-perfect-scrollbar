@@ -38,7 +38,7 @@ export default class ScrollBar extends Component {
   componentWillUnmount() {
     // unhook up evens
     Object.keys(this._handlerByEvent).forEach((key) => {
-      const value = this._handlerByEvent[key]
+      const value = this._handlerByEvent[key];
 
       if (value) {
         this._container.removeEventListener(key, value, false);
