@@ -1,5 +1,10 @@
 @import '../node_modules/perfect-scrollbar/css/perfect-scrollbar.css';
 
+h1 {
+  font-size: 20px;
+  margin: 10px 0; 
+}
+
 .scrollbar-container {
   position: relative;
   height: 100%;

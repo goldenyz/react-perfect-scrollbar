@@ -14,6 +14,12 @@ export interface ScrollBarProps {
   option?: object;
 
   /**
+   * automatically refresh(re-init) when perfect-scrollbar
+   * options changed.
+   */
+  shouldRefresh?: boolean;
+
+  /**
    * get the container ref
    */
   containerRef?: ((ref: any) => void);

@@ -25,17 +25,30 @@ export default class ScrollBar extends Component {
   }
 
   componentDidMount() {
-    this._ps = new PerfectScrollbar(this._container, this.props.option);
-    // hook up events
-    this._updateEventHook();
+    this._init();
   }
 
   componentDidUpdate(prevProps) {
+    if (this.props.shouldRefresh
+      && !this._isEqual(prevProps.option, this.props.option)) {
+      this.refresh();
+      return;
+    }
     this._updateEventHook(prevProps);
     this._ps.update();
   }
 
   componentWillUnmount() {
+    this._destroy();
+  }
+
+  _init() {
+    this._ps = new PerfectScrollbar(this._container, this.props.option);
+    // hook up events
+    this._updateEventHook();
+  }
+
+  _destroy() {
     // unhook up evens
     Object.keys(this._handlerByEvent).forEach((key) => {
       const value = this._handlerByEvent[key];
@@ -47,6 +60,40 @@ export default class ScrollBar extends Component {
     this._handlerByEvent = {};
     this._ps.destroy();
     this._ps = null;
+  }
+
+  _isEqual(a, b) {
+    // create arrays of property names
+    const aProps = Object.getOwnPropertyNames(a);
+    const bProps = Object.getOwnPropertyNames(b);
+
+    // if number of properties is different,
+    // objects are not equivalent
+    if (aProps.length !== bProps.length) return false;
+
+    for (let i = 0; i < aProps.length; i++) {
+      const propName = aProps[i];
+
+      // if values of same property are not equal,
+      // objects are not equivalent
+      if (a[propName] !== b[propName]) {
+        return false;
+      }
+
+      // if both values are arrays such as handlers option in perfect-scollbar
+      if (Array.isArray(a[propName])) {
+        const aArray = a[propName];
+        const bArray = b[propName];
+        if (aArray.length !== bArray.length) return false;
+        for (let j = 0; j < aArray.length; j++) {
+          if (aArray[j] !== bArray[j]) return false;
+        }
+      }
+    }
+
+    // if we made it this far, objects
+    // are considered equivalent
+    return true;
   }
 
   _updateEventHook(prevProps = {}) {
@@ -73,6 +120,11 @@ export default class ScrollBar extends Component {
     this._ps.update();
   }
 
+  refresh() {
+    this._destroy();
+    this._init();
+  }
+
   handleRef(ref) {
     this._container = ref;
     this.props.containerRef(ref);
@@ -96,6 +148,7 @@ ScrollBar.defaultProps = {
   className: '',
   style: undefined,
   option: undefined,
+  shouldRefresh: undefined,
   containerRef: () => { },
   onScrollY: undefined,
   onScrollX: undefined,
@@ -115,6 +168,7 @@ ScrollBar.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   option: PropTypes.object,
+  shouldRefresh: PropTypes.bool,
   containerRef: PropTypes.func,
   onScrollY: PropTypes.func,
   onScrollX: PropTypes.func,
