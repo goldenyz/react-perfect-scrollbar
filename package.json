@@ -13,6 +13,7 @@
     "example": "webpack-dev-server --content-base example/ --config example/webpack.config.js",
     "lint": "eslint src",
     "test": "echo \"Test: TBD\"",
+    "prepare": "npm run build",
     "postversion": "git push && git push --tags"
   },
   "repository": {
