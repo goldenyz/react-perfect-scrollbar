@@ -16,6 +16,21 @@ const handlerNameByEvent = {
 };
 Object.freeze(handlerNameByEvent);
 
+function isEqual(a = {}, b = {}) {
+  const aProps = Object.getOwnPropertyNames(a);
+  const bProps = Object.getOwnPropertyNames(b);
+  if (aProps.length !== bProps.length) {
+    return false;
+  }
+  for (let i = 0; i < aProps.length; i++) {
+    const propName = aProps[i];
+    if (a[propName] !== b[propName]) {
+      return false;
+    }
+  }
+  return true;
+}
+
 export default class ScrollBar extends Component {
   constructor(props) {
     super(props);
@@ -30,23 +45,20 @@ export default class ScrollBar extends Component {
     this._updateEventHook();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!isEqual(nextProps.option, this.props.option)) {
+      this._destroy();
+      this._init(nextProps);
+    }
+  }
+
   componentDidUpdate(prevProps) {
     this._updateEventHook(prevProps);
     this._ps.update();
   }
 
   componentWillUnmount() {
-    // unhook up evens
-    Object.keys(this._handlerByEvent).forEach((key) => {
-      const value = this._handlerByEvent[key];
-
-      if (value) {
-        this._container.removeEventListener(key, value, false);
-      }
-    });
-    this._handlerByEvent = {};
-    this._ps.destroy();
-    this._ps = null;
+    this._destroy();
   }
 
   _updateEventHook(prevProps = {}) {
@@ -67,6 +79,26 @@ export default class ScrollBar extends Component {
         }
       }
     });
+  }
+
+  _init(props = this.props) {
+    this._ps = new PerfectScrollbar(this._container, props.option);
+    // hook up events
+    this._updateEventHook();
+  }
+
+  _destroy() {
+    // unhook up evens
+    Object.keys(this._handlerByEvent).forEach((key) => {
+      const value = this._handlerByEvent[key];
+
+      if (value) {
+        this._container.removeEventListener(key, value, false);
+      }
+    });
+    this._handlerByEvent = {};
+    this._ps.destroy();
+    this._ps = null;
   }
 
   updateScroll() {

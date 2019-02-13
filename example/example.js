@@ -15,6 +15,7 @@ class Example extends Component {
     super(props);
 
     this.state = {
+      wheelSpeed: 1,
       onXReachEnd: null,
     };
   }
@@ -27,12 +28,24 @@ class Example extends Component {
     }, 5000);
   }
 
+  onClick = ({ target: { name } }) => {
+    if (name === 'increment') {
+      this.setState(prevState => ({
+        wheelSpeed: prevState.wheelSpeed + 1,
+      }));
+    } else {
+      this.setState(prevState => ({
+        wheelSpeed: prevState.wheelSpeed - 1,
+      }));
+    }
+  }
+
   handleYReachEnd = () => {
     logEvent('onYReachEnd');
   }
 
   render() {
-    const { onXReachEnd } = this.state;
+    const { onXReachEnd, wheelSpeed } = this.state;
 
     return (
       <div className="example">
@@ -48,9 +61,22 @@ class Example extends Component {
           onXReachStart={() => logEvent('onXReachStart')}
           onXReachEnd={onXReachEnd}
           component="div"
+          option={{ wheelSpeed }}
         >
           <div className="content" />
         </ScrollBar>
+        <button
+          name="increment"
+          onClick={this.onClick}
+        >
+          Change speed +1
+        </button>
+        <button
+          name="decrement"
+          onClick={this.onClick}
+        >
+          Change speed -1
+        </button>
       </div>
     );
   }
