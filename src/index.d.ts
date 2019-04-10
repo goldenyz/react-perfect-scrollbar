@@ -1,6 +1,8 @@
 /// <reference types="react" />
+/// <reference types="perfect-scrollbar" />
 
 import * as React from "react";
+import PerfectScrollbar from 'perfect-scrollbar';
 
 export interface ScrollBarProps {
   /**
@@ -11,7 +13,7 @@ export interface ScrollBarProps {
   /**
    * perfect-scrollbar init options
    */
-  option?: object;
+  option?: PerfectScrollbar.Options;
 
   /**
    * get the container ref
