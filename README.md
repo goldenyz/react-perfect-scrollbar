@@ -25,9 +25,13 @@ Wrap you content in this component:
 
 ### Props
 The following props are accepted:
-#### option
+#### options
 The optional parameters used to initialize [perfect-scrollbar](https://github.com/utatti/perfect-scrollbar).
 For more info, please refer to  https://github.com/utatti/perfect-scrollbar#options
+
+This prop previously was called "option", but has since been renamed.
+If you provide "option" as a prop, it will be used unless "options" is also passed.
+
 #### containerRef
 Return the container ref: (ref) => void;
 If you want to scroll to somewhere, just update scrollTop/scrollLeft by the ref:

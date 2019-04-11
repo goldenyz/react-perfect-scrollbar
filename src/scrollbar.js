@@ -25,7 +25,11 @@ export default class ScrollBar extends Component {
   }
 
   componentDidMount() {
-    this._ps = new PerfectScrollbar(this._container, this.props.option);
+    if(this.props.option) {
+      console.warn('react-perfect-scrollbar: the "option" prop has been deprecated in favor of "options"');
+    }
+
+    this._ps = new PerfectScrollbar(this._container, this.props.options || this.props.option);
     // hook up events
     this._updateEventHook();
   }
@@ -96,6 +100,7 @@ ScrollBar.defaultProps = {
   className: '',
   style: undefined,
   option: undefined,
+  options: undefined,
   containerRef: () => { },
   onScrollY: undefined,
   onScrollX: undefined,
@@ -115,6 +120,7 @@ ScrollBar.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   option: PropTypes.object,
+  options: PropTypes.object,
   containerRef: PropTypes.func,
   onScrollY: PropTypes.func,
   onScrollX: PropTypes.func,
