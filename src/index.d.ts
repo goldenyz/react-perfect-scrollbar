@@ -12,8 +12,15 @@ export interface ScrollBarProps {
 
   /**
    * perfect-scrollbar init options
+   *
+   * @deprecated in favor of {@link #options}
    */
   option?: PerfectScrollbar.Options;
+
+  /**
+   * perfect-scrollbar init options
+   */
+  options?: PerfectScrollbar.Options;
 
   /**
    * get the container ref
