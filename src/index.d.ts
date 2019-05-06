@@ -30,57 +30,57 @@ export interface ScrollBarProps {
   /**
    * get the container ref
    */
-  containerRef?: (ref: any) => void;
+  containerRef?: (ref: React.RefObject<any>) => void;
 
   /**
    * fires when the y-axis is scrolled in either direction.
    */
-  onScrollY?: (container: any) => void;
+  onScrollY?: (container: HTMLElement) => void;
 
   /**
    * fires when the x-axis is scrolled in either direction.
    */
-  onScrollX?: (container: any) => void;
+  onScrollX?: (container: HTMLElement) => void;
 
   /**
    * fires when scrolling upwards.
    */
-  onScrollUp?: (container: any) => void;
+  onScrollUp?: (container: HTMLElement) => void;
 
   /**
    * fires when scrolling downwards.
    */
-  onScrollDown?: (container: any) => void;
+  onScrollDown?: (container: HTMLElement) => void;
 
   /**
    * fires when scrolling to the left.
    */
-  onScrollLeft?: (container: any) => void;
+  onScrollLeft?: (container: HTMLElement) => void;
 
   /**
    * fires when scrolling to the right.
    */
-  onScrollRight?: (container: any) => void;
+  onScrollRight?: (container: HTMLElement) => void;
 
   /**
    * fires when scrolling reaches the start of the y-axis.
    */
-  onYReachStart?: (container: any) => void;
+  onYReachStart?: (container: HTMLElement) => void;
 
   /**
    * fires when scrolling reaches the end of the y-axis (useful for infinite scroll).
    */
-  onYReachEnd?: (container: any) => void;
+  onYReachEnd?: (container: HTMLElement) => void;
 
   /**
    * fires when scrolling reaches the start of the x-axis.
    */
-  onXReachStart?: (container: any) => void;
+  onXReachStart?: (container: HTMLElement) => void;
 
   /**
    * fires when scrolling reaches the end of the x-axis.
    */
-  onXReachEnd?: (container: any) => void;
+  onXReachEnd?: (container: HTMLElement) => void;
 
   /**
    * component name
