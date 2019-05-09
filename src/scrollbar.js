@@ -25,7 +25,7 @@ export default class ScrollBar extends Component {
   }
 
   componentDidMount() {
-    if(this.props.option) {
+    if (this.props.option) {
       console.warn('react-perfect-scrollbar: the "option" prop has been deprecated in favor of "options"');
     }
 
