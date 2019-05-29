@@ -30,7 +30,7 @@ export interface ScrollBarProps {
   /**
    * get the container ref
    */
-  containerRef?: ((ref: React.RefObject<any>) => void);
+  containerRef?: ((container: HTMLElement) => void);
 
   /**
    * fires when the y-axis is scrolled in either direction.
