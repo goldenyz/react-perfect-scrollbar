@@ -148,7 +148,7 @@ ScrollBar.defaultProps = {
   className: '',
   style: undefined,
   option: undefined,
-  shouldRefresh: undefined,
+  shouldRefresh: false,
   containerRef: () => { },
   onScrollY: undefined,
   onScrollX: undefined,
