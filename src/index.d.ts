@@ -88,4 +88,6 @@ export interface ScrollBarProps {
   component?: string;
 }
 
-export default class ScrollBar extends React.Component<ScrollBarProps, any> { }
+export default class ScrollBar extends React.Component<ScrollBarProps, any> {
+  updateScroll();
+}
