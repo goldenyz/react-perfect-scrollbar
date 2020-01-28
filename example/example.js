@@ -15,6 +15,7 @@ class Example extends Component {
     super(props);
 
     this.state = {
+      className: undefined,
       onXReachEnd: null,
     };
   }
@@ -22,6 +23,7 @@ class Example extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({
+        className: 'dummy',
         onXReachEnd: () => logEvent('onXReachEnd'),
       });
     }, 5000);
@@ -32,11 +34,12 @@ class Example extends Component {
   }
 
   render() {
-    const { onXReachEnd } = this.state;
+    const { className, onXReachEnd } = this.state;
 
     return (
       <div className="example">
         <ScrollBar
+          className={className}
           onScrollY={() => logEvent('onScrollY')}
           onScrollX={() => logEvent('onScrollX')}
           onScrollUp={() => logEvent('onScrollUp')}
