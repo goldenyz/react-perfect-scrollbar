@@ -100,12 +100,29 @@ export default class ScrollBar extends Component {
 
   render() {
     const {
-      children, component, style,
+      className,
+      style,
+      option,
+      options,
+      containerRef,
+      onScrollY,
+      onScrollX,
+      onScrollUp,
+      onScrollDown,
+      onScrollLeft,
+      onScrollRight,
+      onYReachStart,
+      onYReachEnd,
+      onXReachStart,
+      onXReachEnd,
+      component,
+      children,
+      ...remainProps
     } = this.props;
     const Comp = component;
 
     return (
-      <Comp style={style} ref={this.handleRef}>
+      <Comp style={style} ref={this.handleRef} {...remainProps}>
         {children}
       </Comp>
     );

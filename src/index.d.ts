@@ -4,7 +4,7 @@
 import * as React from 'react';
 import PerfectScrollbar from 'perfect-scrollbar';
 
-export interface ScrollBarProps {
+export interface ScrollBarProps extends React.HTMLAttributes {
   /**
    * class name on container
    */

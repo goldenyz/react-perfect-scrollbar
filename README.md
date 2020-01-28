@@ -79,6 +79,9 @@ All the callback 'onXXXX' can accept a parameter: the ref to the scrollbar conta
     </PerfectScrollbar>
 ```
 
+#### React.HTMLAttributes
+Any attributes defined in [React.HTMLAttributes](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts#L1689) can be used for the component.
+
 ### Methods
 The following method can be called by the component ref:
 #### updateScroll
