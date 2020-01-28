@@ -32,11 +32,15 @@ export default class ScrollBar extends Component {
     this._ps = new PerfectScrollbar(this._container, this.props.options || this.props.option);
     // hook up events
     this._updateEventHook();
+    this._updateClassName();
   }
 
   componentDidUpdate(prevProps) {
     this._updateEventHook(prevProps);
     this._ps.update();
+    if (prevProps.className !== this.props.className) {
+      this._updateClassName();
+    }
   }
 
   componentWillUnmount() {
@@ -73,6 +77,18 @@ export default class ScrollBar extends Component {
     });
   }
 
+  _updateClassName() {
+    const { className } = this.props;
+
+    const psClassNames = this._container.className.split(' ')
+      .filter(name => name.match(/^ps([-_].+|)$/))
+      .join(' ');
+
+    if (this._container) {
+      this._container.className = `scrollbar-container${className ? ` ${className}` : ''}${psClassNames ? ` ${psClassNames}` : ''}`;
+    }
+  }
+
   updateScroll() {
     this._ps.update();
   }
@@ -84,12 +100,12 @@ export default class ScrollBar extends Component {
 
   render() {
     const {
-      children, component, className, style,
+      children, component, style,
     } = this.props;
     const Comp = component;
 
     return (
-      <Comp style={style} className={`scrollbar-container ${className}`} ref={this.handleRef}>
+      <Comp style={style} ref={this.handleRef}>
         {children}
       </Comp>
     );
