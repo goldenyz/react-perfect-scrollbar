@@ -91,6 +91,11 @@ export default class ScrollBar extends Component {
     }
   }
 
+  updateScroll() {
+    if (typeof this.props.onSync === 'function') this.props.onSync(this._ps);
+    else this._ps.update();
+  }
+
   handleRef(ref) {
     this._container = ref;
     this.props.containerRef(ref);
