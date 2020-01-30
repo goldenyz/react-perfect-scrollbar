@@ -38,7 +38,7 @@ export default class ScrollBar extends Component {
   componentDidUpdate(prevProps) {
     this._updateEventHook(prevProps);
 
-    if (typeof this.props.onSync === 'function') this.props.onSync(this._ps);
+    this.updateScroll();
 
     if (prevProps.className !== this.props.className) {
       this._updateClassName();
@@ -92,8 +92,7 @@ export default class ScrollBar extends Component {
   }
 
   updateScroll() {
-    if (typeof this.props.onSync === 'function') this.props.onSync(this._ps);
-    else this._ps.update();
+    this.props.onSync(this._ps);
   }
 
   handleRef(ref) {
