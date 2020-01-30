@@ -37,7 +37,9 @@ export default class ScrollBar extends Component {
 
   componentDidUpdate(prevProps) {
     this._updateEventHook(prevProps);
-    this._ps.update();
+
+    this.updateScroll();
+
     if (prevProps.className !== this.props.className) {
       this._updateClassName();
     }
@@ -90,7 +92,7 @@ export default class ScrollBar extends Component {
   }
 
   updateScroll() {
-    this._ps.update();
+    this.props.onSync(this._ps);
   }
 
   handleRef(ref) {
@@ -116,6 +118,7 @@ export default class ScrollBar extends Component {
       onXReachStart,
       onXReachEnd,
       component,
+      onSync,
       children,
       ...remainProps
     } = this.props;
@@ -145,6 +148,7 @@ ScrollBar.defaultProps = {
   onYReachEnd: undefined,
   onXReachStart: undefined,
   onXReachEnd: undefined,
+  onSync: ps => ps.update(),
   component: 'div',
 };
 
@@ -165,5 +169,6 @@ ScrollBar.propTypes = {
   onYReachEnd: PropTypes.func,
   onXReachStart: PropTypes.func,
   onXReachEnd: PropTypes.func,
+  onSync: PropTypes.func,
   component: PropTypes.string,
 };
