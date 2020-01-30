@@ -79,6 +79,13 @@ All the callback 'onXXXX' can accept a parameter: the ref to the scrollbar conta
     </PerfectScrollbar>
 ```
 
+#### onSync
+Invoked when `PerfectScrollbar` comp needs to sync the scrollbar container by invoking `ps.update()`(Basically, it is invoked in CDU lifecycle) and receive the internal `perfect-scroll` instance `ps` as parameter.
+
+It is useful when you want to customize the sync logic in some scenarios, eg: debounce the invocation of `ps.update()`.
+
+For more detail, please refer to [issue#87](https://github.com/goldenyz/react-perfect-scrollbar/issues/87) and the example directory.
+
 #### React.HTMLAttributes
 Any attributes defined in [React.HTMLAttributes](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts#L1689) can be used for the component.
 
