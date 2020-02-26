@@ -87,7 +87,7 @@ export default class ScrollBar extends Component {
       .join(' ');
 
     if (this._container) {
-      this._container.className = `scrollbar-container${className ? ` ${className}` : ''}${psClassNames ? ` ${psClassNames}` : ''}`;
+      this._container.className = `${className ? `${className} ` : ''}scrollbar-container${psClassNames ? ` ${psClassNames}` : ''}`;
     }
   }
 
