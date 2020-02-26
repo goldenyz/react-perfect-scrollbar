@@ -10,18 +10,29 @@ function logEvent(type) {
   console.log(`event '${type}' triggered!`);
 }
 
+const debounce = (fn, ms = 0) => {
+  let timeoutId;
+  return function wrapper(...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), ms);
+  };
+};
+
 class Example extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      className: undefined,
       onXReachEnd: null,
+      items: Array.from(new Array(100).keys()),
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({
+        className: 'dummy',
         onXReachEnd: () => logEvent('onXReachEnd'),
       });
     }, 5000);
@@ -31,27 +42,48 @@ class Example extends Component {
     logEvent('onYReachEnd');
   }
 
+  handleTrigger = () => {
+    this.setState({
+      items: Array.from(new Array(100).keys()),
+    });
+  }
+
+  handleSync = debounce((ps) => {
+    ps.update();
+    console.log('debounce sync ps container in 1000ms');
+  }, 1000)
+
   render() {
-    const { onXReachEnd } = this.state;
+    const { className, onXReachEnd } = this.state;
 
     return (
-      <div className="example">
-        <ScrollBar
-          onScrollY={() => logEvent('onScrollY')}
-          onScrollX={() => logEvent('onScrollX')}
-          onScrollUp={() => logEvent('onScrollUp')}
-          onScrollDown={() => logEvent('onScrollDown')}
-          onScrollLeft={() => logEvent('onScrollLeft')}
-          onScrollRight={() => logEvent('onScrollRight')}
-          onYReachStart={() => logEvent('onYReachStart')}
-          onYReachEnd={this.handleYReachEnd}
-          onXReachStart={() => logEvent('onXReachStart')}
-          onXReachEnd={onXReachEnd}
-          component="div"
-        >
-          <div className="content" />
-        </ScrollBar>
-      </div>
+      <React.Fragment>
+
+        <div className="example">
+          <ScrollBar
+            className={className}
+            onScrollY={() => logEvent('onScrollY')}
+            onScrollX={() => logEvent('onScrollX')}
+            onScrollUp={() => logEvent('onScrollUp')}
+            onScrollDown={() => logEvent('onScrollDown')}
+            onScrollLeft={() => logEvent('onScrollLeft')}
+            onScrollRight={() => logEvent('onScrollRight')}
+            onYReachStart={() => logEvent('onYReachStart')}
+            onYReachEnd={this.handleYReachEnd}
+            onXReachStart={() => logEvent('onXReachStart')}
+            onXReachEnd={onXReachEnd}
+            component="div"
+          >
+            <div className="content" />
+          </ScrollBar>
+        </div>
+        <div className="example">
+          <button onClick={this.handleTrigger}>Trigger</button>
+          <ScrollBar onSync={this.handleSync}>
+            {this.state.items.map(e => (<div key={e}>{e}</div>))}
+          </ScrollBar>
+        </div>
+      </React.Fragment>
     );
   }
 }

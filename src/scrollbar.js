@@ -25,14 +25,24 @@ export default class ScrollBar extends Component {
   }
 
   componentDidMount() {
-    this._ps = new PerfectScrollbar(this._container, this.props.option);
+    if (this.props.option) {
+      console.warn('react-perfect-scrollbar: the "option" prop has been deprecated in favor of "options"');
+    }
+
+    this._ps = new PerfectScrollbar(this._container, this.props.options || this.props.option);
     // hook up events
     this._updateEventHook();
+    this._updateClassName();
   }
 
   componentDidUpdate(prevProps) {
     this._updateEventHook(prevProps);
-    this._ps.update();
+
+    this.updateScroll();
+
+    if (prevProps.className !== this.props.className) {
+      this._updateClassName();
+    }
   }
 
   componentWillUnmount() {
@@ -69,8 +79,20 @@ export default class ScrollBar extends Component {
     });
   }
 
+  _updateClassName() {
+    const { className } = this.props;
+
+    const psClassNames = this._container.className.split(' ')
+      .filter(name => name.match(/^ps([-_].+|)$/))
+      .join(' ');
+
+    if (this._container) {
+      this._container.className = `scrollbar-container${className ? ` ${className}` : ''}${psClassNames ? ` ${psClassNames}` : ''}`;
+    }
+  }
+
   updateScroll() {
-    this._ps.update();
+    this.props.onSync(this._ps);
   }
 
   handleRef(ref) {
@@ -80,12 +102,30 @@ export default class ScrollBar extends Component {
 
   render() {
     const {
-      children, component, className, style,
+      className,
+      style,
+      option,
+      options,
+      containerRef,
+      onScrollY,
+      onScrollX,
+      onScrollUp,
+      onScrollDown,
+      onScrollLeft,
+      onScrollRight,
+      onYReachStart,
+      onYReachEnd,
+      onXReachStart,
+      onXReachEnd,
+      component,
+      onSync,
+      children,
+      ...remainProps
     } = this.props;
     const Comp = component;
 
     return (
-      <Comp style={style} className={`scrollbar-container ${className}`} ref={this.handleRef}>
+      <Comp style={style} ref={this.handleRef} {...remainProps}>
         {children}
       </Comp>
     );
@@ -96,6 +136,7 @@ ScrollBar.defaultProps = {
   className: '',
   style: undefined,
   option: undefined,
+  options: undefined,
   containerRef: () => { },
   onScrollY: undefined,
   onScrollX: undefined,
@@ -107,6 +148,7 @@ ScrollBar.defaultProps = {
   onYReachEnd: undefined,
   onXReachStart: undefined,
   onXReachEnd: undefined,
+  onSync: ps => ps.update(),
   component: 'div',
 };
 
@@ -115,6 +157,7 @@ ScrollBar.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   option: PropTypes.object,
+  options: PropTypes.object,
   containerRef: PropTypes.func,
   onScrollY: PropTypes.func,
   onScrollX: PropTypes.func,
@@ -126,5 +169,6 @@ ScrollBar.propTypes = {
   onYReachEnd: PropTypes.func,
   onXReachStart: PropTypes.func,
   onXReachEnd: PropTypes.func,
+  onSync: PropTypes.func,
   component: PropTypes.string,
 };
