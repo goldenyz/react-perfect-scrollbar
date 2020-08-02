@@ -1,7 +1,10 @@
+.refresh-example-head {
+  margin-top: 40px;
+}
+
 .refresh-example {
   width: 400px;
   height: 400px;
-  // margin-top: 25px;
 
   &__content {
     background: url('./shin-chan.jpg') top left no-repeat;
@@ -15,6 +18,6 @@
   }
   
   &__btn {
-    margin: 10px 5px 0 0;
+    margin: 10px 5px 20px 0;
   }
 }

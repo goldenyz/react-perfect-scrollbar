@@ -29,14 +29,14 @@ class Example extends Component {
     }, 5000);
   }
 
-  handleSupressScrollY = () => {
+  handleSuppressScrollY = () => {
     this.setState(prevProps => ({
       ...this.state,
       isSuppressY: !prevProps.isSuppressY,
     }));
   }
 
-  handleSupressScrollX = () => {
+  handleSuppressScrollX = () => {
     this.setState(prevProps => ({
       ...this.state,
       isSuppressX: !prevProps.isSuppressX,
@@ -53,12 +53,12 @@ class Example extends Component {
     return (
       <div className="refresh-example">
         {isSuppressY
-          ? <span className="refresh-example__msg">Y Axis scroll suppressed</span>
-          : <span className="refresh-example__msg">Y Axis scroll available</span>
+          ? <span className="refresh-example__msg">Y Axis scroll <b>suppressed</b></span>
+          : <span className="refresh-example__msg">Y Axis scroll <i>available</i></span>
         }
         {isSuppressX
-          ? <span className="refresh-example__msg">X Axis scroll suppressed</span>
-          : <span className="refresh-example__msg">X Axis scroll available</span>
+          ? <span className="refresh-example__msg">X Axis scroll <b>suppressed</b></span>
+          : <span className="refresh-example__msg">X Axis scroll <i>available</i></span>
         }
         <ScrollBar
           onScrollY={() => logEvent('onScrollY')}
@@ -80,8 +80,8 @@ class Example extends Component {
         >
           <div className="refresh-example__content" />
         </ScrollBar>
-        <button className="refresh-example__btn" onClick={this.handleSupressScrollY}>Supress Y scroll</button>
-        <button className="refresh-example__btn" onClick={this.handleSupressScrollX}>Supress X scroll</button>
+        <button className="refresh-example__btn" onClick={this.handleSuppressScrollY}>Suppress Y scroll</button>
+        <button className="refresh-example__btn" onClick={this.handleSuppressScrollX}>Suppress X scroll</button>
       </div>
     );
   }
