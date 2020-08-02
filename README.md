@@ -25,9 +25,13 @@ Wrap you content in this component:
 
 ### Props
 The following props are accepted:
-#### option
+#### options
 The optional parameters used to initialize [perfect-scrollbar](https://github.com/utatti/perfect-scrollbar).
 For more info, please refer to  https://github.com/utatti/perfect-scrollbar#options
+
+This prop previously was called "option", but has since been renamed.
+If you provide "option" as a prop, it will be used unless "options" is also passed.
+
 #### containerRef
 Return the container ref: (ref) => void;
 If you want to scroll to somewhere, just update scrollTop/scrollLeft by the ref:
@@ -77,6 +81,16 @@ All the callback 'onXXXX' can accept a parameter: the ref to the scrollbar conta
         ... SCROLLBAR CONTENT HERE ...
     </PerfectScrollbar>
 ```
+
+#### onSync
+Invoked when `PerfectScrollbar` comp needs to sync the scrollbar container by invoking `ps.update()`(Basically, it is invoked in CDU lifecycle) and receive the internal `perfect-scroll` instance `ps` as parameter.
+
+It is useful when you want to customize the sync logic in some scenarios, eg: debounce the invocation of `ps.update()`.
+
+For more detail, please refer to [issue#87](https://github.com/goldenyz/react-perfect-scrollbar/issues/87) and the example directory.
+
+#### React.HTMLAttributes
+Any attributes defined in [React.HTMLAttributes](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts#L1689) can be used for the component.
 
 ### Methods
 The following method can be called by the component ref:
