@@ -50,6 +50,9 @@ The container component type. Default to "div". Only string is allowed.
 The className added to container.
 #### style
 The style added to container.
+#### shouldRefresh
+Automatically refresh(destroy and re-init with all hooks) when scrollbar options(option prop) are changed.
+Useful when you need to suppress scroll with one of the axes(working example inside the repo).
 #### onScrollY
 Invoked when the y-axis is scrolled in either direction.
 #### onScrollX
@@ -162,9 +165,11 @@ class ChildComponent extends Component {
   }
 }
 ```
+#### refresh
+Destroy and re-init scrollbar.
 
 ### Example
-A working example can be found in the `example` directory. Please run `npm run example` in browser. (Must run `npm run build` for the first time)
+A working examples can be found in the `example` directory. Please run `npm run example` in browser. (Must run `npm run build` for the first time)
 
 ### License
 MIT

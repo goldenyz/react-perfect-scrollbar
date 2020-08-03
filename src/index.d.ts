@@ -28,6 +28,12 @@ export interface ScrollBarProps extends React.HTMLAttributes<HTMLElement> {
   options?: PerfectScrollbar.Options;
 
   /**
+   * automatically refresh(re-init) when perfect-scrollbar
+   * options changed.
+   */
+  shouldRefresh?: boolean;
+
+  /**
    * get the container ref
    */
   containerRef?: ((container: HTMLElement) => void);
