@@ -29,15 +29,13 @@ export default class ScrollBar extends Component {
       console.warn('react-perfect-scrollbar: the "option" prop has been deprecated in favor of "options"');
     }
 
-    this._ps = new PerfectScrollbar(this._container, this.props.options || this.props.option);
-    // hook up events
-    this._updateEventHook();
+    this._init();
     this._updateClassName();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.shouldRefresh
-      && !this._isEqual(prevProps.option, this.props.option)) {
+      && !this._isEqual(this._getOptions(prevProps), this._getOptions())) {
       this.refresh();
       return;
     }
@@ -54,8 +52,12 @@ export default class ScrollBar extends Component {
     this._destroy();
   }
 
+  _getOptions(from = this.props) {
+    return from.options || from.option;
+  }
+
   _init() {
-    this._ps = new PerfectScrollbar(this._container, this.props.option);
+    this._ps = new PerfectScrollbar(this._container, this._getOptions());
     // hook up events
     this._updateEventHook();
   }
@@ -174,6 +176,7 @@ export default class ScrollBar extends Component {
       component,
       onSync,
       children,
+      shouldRefresh,
       ...remainProps
     } = this.props;
     const Comp = component;

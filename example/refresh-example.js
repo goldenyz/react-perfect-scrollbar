@@ -72,7 +72,7 @@ class Example extends Component {
           onXReachStart={() => logEvent('onXReachStart')}
           onXReachEnd={onXReachEnd}
           component="div"
-          option={{
+          options={{
             suppressScrollY: isSuppressY,
             suppressScrollX: isSuppressX,
           }}
