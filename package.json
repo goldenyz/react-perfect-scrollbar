@@ -1,6 +1,6 @@
 {
   "name": "react-perfect-scrollbar",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "A react wrapper for perfect-scrollbar",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -38,7 +38,7 @@
     "react-dom": ">=16.3.3"
   },
   "dependencies": {
-    "perfect-scrollbar": "^1.5.0",
+    "perfect-scrollbar": "git://github.com/MaisonetteWorld/perfect-scrollbar.git",
     "prop-types": "^15.6.1"
   },
   "devDependencies": {
