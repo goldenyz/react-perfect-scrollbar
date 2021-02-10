@@ -119,7 +119,7 @@ class ChildComponent extends Component {
     return (
       <div>
         <button onClick={this.handleClick} />
-        { this.state.show ? <div /> }
+        { this.state.show && <div /> }
       </div>
     )
   }
@@ -156,7 +156,7 @@ class ChildComponent extends Component {
     return (
       <div>
         <button onClick={this.handleClick} />
-        { this.state.show ? <div /> }
+        { this.state.show && <div /> }
       </div>
     )
   }
